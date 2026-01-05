@@ -4,5 +4,23 @@
         "nome": "coxinha",
         "preco": 6.0,
         "estoque": 5
+    },
+    {
+        "id": 2,
+        "nome": "bomba",
+        "preco": 5.0,
+        "estoque": 15
+    },
+    {
+        "id": 3,
+        "nome": "risole",
+        "preco": 20.0,
+        "estoque": 7
+    },
+    {
+        "id": 4,
+        "nome": "quibe",
+        "preco": 5.0,
+        "estoque": 13
     }
 ]

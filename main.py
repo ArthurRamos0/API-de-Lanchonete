@@ -31,6 +31,38 @@ def input_float(mensagem):
         except ValueError:
             print("❌ Digite um valor numérico válido.")
 
+def relatorio_vendas():
+    vendas = carregar_vendas()
+
+    if not vendas:
+        print("⚠️ Nenhuma venda registrada.")
+        return
+
+    total_faturado = 0
+    total_itens = 0
+    vendas_por_produto = {}
+
+    for v in vendas:
+        total_faturado += v["total"]
+        total_itens += v["quantidade"]
+
+        nome = v["produto_nome"]
+        vendas_por_produto[nome] = vendas_por_produto.get(nome, 0) + v["quantidade"]
+
+    produto_mais_vendido = max(vendas_por_produto, key=vendas_por_produto.get)
+
+    print("\n📊 RELATÓRIO DE VENDAS")
+    print(f"💰 Total faturado: R$ {total_faturado:.2f}")
+    print(f"📦 Itens vendidos: {total_itens}")
+    print(f"🔥 Produto mais vendido: {produto_mais_vendido}")
+
+    print("\n🧾 HISTÓRICO DE VENDAS")
+    for v in vendas:
+        print(
+            f"{v['data']} | {v['produto_nome']} "
+            f"| {v['quantidade']}x | R$ {v['total']:.2f}"
+        )
+
 # ========================
 # PERSISTÊNCIA
 # ========================
@@ -148,7 +180,8 @@ def menu():
 1️⃣ Cadastrar produto
 2️⃣ Listar produtos
 3️⃣ Registrar venda
-4️⃣ Sair
+4️⃣ Relatório de vendas
+5️⃣ Sair
 """)
 
         opcao = input("Escolha uma opção: ")
@@ -160,6 +193,8 @@ def menu():
         elif opcao == "3":
             registrar_venda()
         elif opcao == "4":
+            relatorio_vendas()
+        elif opcao == "5":
             print("👋 Saindo do sistema...")
             break
         else:

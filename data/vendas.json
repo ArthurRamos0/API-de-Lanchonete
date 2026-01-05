@@ -6,5 +6,29 @@
         "preco_unitario": 6.0,
         "total": 30.0,
         "data": "05/01/2026 12:54:34"
+    },
+    {
+        "produto_id": 2,
+        "produto_nome": "bomba",
+        "quantidade": 5,
+        "preco_unitario": 5.0,
+        "total": 25.0,
+        "data": "05/01/2026 12:58:54"
+    },
+    {
+        "produto_id": 3,
+        "produto_nome": "risole",
+        "quantidade": 3,
+        "preco_unitario": 20.0,
+        "total": 60.0,
+        "data": "05/01/2026 12:59:16"
+    },
+    {
+        "produto_id": 4,
+        "produto_nome": "quibe",
+        "quantidade": 7,
+        "preco_unitario": 5.0,
+        "total": 35.0,
+        "data": "05/01/2026 12:59:38"
     }
 ]
