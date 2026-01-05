@@ -1,25 +1,47 @@
-produtos = []
-contador_id = 1
+import json
+import os
+
+ARQUIVO_PRODUTOS = "data/produtos.json"
+
+
+def carregar_produtos():
+    if not os.path.exists(ARQUIVO_PRODUTOS):
+        return []
+
+    with open(ARQUIVO_PRODUTOS, "r", encoding="utf-8") as arquivo:
+        return json.load(arquivo)
+
+
+def salvar_produtos(produtos):
+    with open(ARQUIVO_PRODUTOS, "w", encoding="utf-8") as arquivo:
+        json.dump(produtos, arquivo, indent=4, ensure_ascii=False)
+
+
+produtos = carregar_produtos()
+
+
+def gerar_novo_id():
+    if not produtos:
+        return 1
+    return max(p["id"] for p in produtos) + 1
 
 
 def cadastrar_produto():
-    global contador_id
-
     nome = input("Nome do produto: ")
     preco = float(input("Preço: R$ "))
     estoque = int(input("Quantidade em estoque: "))
 
     produto = {
-        "id": contador_id,
+        "id": gerar_novo_id(),
         "nome": nome,
         "preco": preco,
         "estoque": estoque
     }
 
     produtos.append(produto)
-    contador_id += 1
+    salvar_produtos(produtos)
 
-    print("✅ Produto cadastrado com sucesso!")
+    print("✅ Produto cadastrado e salvo com sucesso!")
 
 
 def listar_produtos():
@@ -44,6 +66,7 @@ def registrar_venda():
                 if produto["estoque"] >= quantidade:
                     total = produto["preco"] * quantidade
                     produto["estoque"] -= quantidade
+                    salvar_produtos(produtos)
                     print(f"🧾 Venda realizada! Total: R$ {total:.2f}")
                 else:
                     print("❌ Estoque insuficiente.")
