@@ -1,6 +1,8 @@
 import json
 import os
 from datetime import datetime
+import csv
+
 
 ARQUIVO_PRODUTOS = "data/produtos.json"
 ARQUIVO_VENDAS = "data/vendas.json"
@@ -62,6 +64,37 @@ def relatorio_vendas():
             f"{v['data']} | {v['produto_nome']} "
             f"| {v['quantidade']}x | R$ {v['total']:.2f}"
         )
+
+def exportar_vendas_csv():
+    vendas = carregar_vendas()
+
+    if not vendas:
+        print("⚠️ Nenhuma venda para exportar.")
+        return
+
+    caminho = "data/relatorio_vendas.csv"
+
+    with open(caminho, "w", newline="", encoding="utf-8") as arquivo:
+        escritor = csv.writer(arquivo)
+
+        escritor.writerow([
+            "Data",
+            "Produto",
+            "Quantidade",
+            "Preço Unitário",
+            "Total"
+        ])
+
+        for v in vendas:
+            escritor.writerow([
+                v["data"],
+                v["produto_nome"],
+                v["quantidade"],
+                f"{v['preco_unitario']:.2f}",
+                f"{v['total']:.2f}"
+            ])
+
+    print(f"✅ Relatório exportado com sucesso em: {caminho}")
 
 # ========================
 # PERSISTÊNCIA
@@ -181,7 +214,8 @@ def menu():
 2️⃣ Listar produtos
 3️⃣ Registrar venda
 4️⃣ Relatório de vendas
-5️⃣ Sair
+5️⃣ Exportar vendas (CSV)
+6️⃣ Sair
 """)
 
         opcao = input("Escolha uma opção: ")
@@ -195,6 +229,8 @@ def menu():
         elif opcao == "4":
             relatorio_vendas()
         elif opcao == "5":
+            exportar_vendas_csv()
+        elif opcao == "6":
             print("👋 Saindo do sistema...")
             break
         else:
