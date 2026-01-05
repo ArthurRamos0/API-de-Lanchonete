@@ -1,0 +1,10 @@
+[
+    {
+        "produto_id": 1,
+        "produto_nome": "coxinha",
+        "quantidade": 5,
+        "preco_unitario": 6.0,
+        "total": 30.0,
+        "data": "05/01/2026 12:54:34"
+    }
+]

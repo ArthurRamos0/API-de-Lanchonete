@@ -2,19 +2,7 @@
     {
         "id": 1,
         "nome": "coxinha",
-        "preco": 4.0,
-        "estoque": 3
-    },
-    {
-        "id": 2,
-        "nome": "1",
-        "preco": 1.0,
-        "estoque": 2
-    },
-    {
-        "id": 3,
-        "nome": "2",
-        "preco": 2.0,
-        "estoque": 2
+        "preco": 6.0,
+        "estoque": 5
     }
 ]
