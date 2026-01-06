@@ -1,10 +1,26 @@
 [
     {
         "produto_id": 1,
-        "produto_nome": "coxinha",
-        "quantidade": 5,
-        "preco_unitario": 4.0,
-        "total": 20.0,
-        "data": "05/01/2026 21:51:54"
+        "produto_nome": "Coxinha",
+        "quantidade": 2,
+        "preco_unitario": 5.0,
+        "total": 10.0,
+        "data": "01/01/2025 10:00"
+    },
+    {
+        "produto_id": 2,
+        "produto_nome": "Pastel",
+        "quantidade": 1,
+        "preco_unitario": 7.0,
+        "total": 7.0,
+        "data": "01/01/2025 11:00"
+    },
+    {
+        "produto_id": 1,
+        "produto_nome": "Coxinha",
+        "quantidade": 3,
+        "preco_unitario": 5.0,
+        "total": 15.0,
+        "data": "01/01/2025 12:00"
     }
 ]
