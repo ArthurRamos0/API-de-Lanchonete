@@ -21,19 +21,22 @@ def gerar_novo_id(produtos):
         return 1
     return max(p["id"] for p in produtos) + 1
 
-def cadastrar_produto(nome, preco, estoque, arquivo):
-    produtos = carregar_json(arquivo)
+def cadastrar_produto(nome, preco, estoque):
+    produtos = carregar_json(ARQUIVO_PRODUTOS)
 
-    novo_produto = {
-        "id": gerar_novo_id(produtos),
+    novo_id = max([p["id"] for p in produtos], default=0) + 1
+
+    produto = {
+        "id": novo_id,
         "nome": nome,
         "preco": preco,
         "estoque": estoque
     }
 
-    produtos.append(novo_produto)
-    salvar_json(arquivo, produtos)
+    produtos.append(produto)
+    salvar_json(ARQUIVO_PRODUTOS, produtos)
 
-    return novo_produto
+    return produto
 
-print("✅ Produto cadastrado com sucesso!")
+
+

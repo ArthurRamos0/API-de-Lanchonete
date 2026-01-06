@@ -1,8 +1,14 @@
 [
     {
         "id": 1,
-        "nome": "coxinha",
-        "preco": 4.0,
-        "estoque": 15
+        "nome": "coca-cola",
+        "preco": 6.5,
+        "estoque": 13
+    },
+    {
+        "id": 2,
+        "nome": "Hambúrguer",
+        "preco": 15.9,
+        "estoque": 10
     }
 ]
