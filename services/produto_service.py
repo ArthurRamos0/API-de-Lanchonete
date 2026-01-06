@@ -16,6 +16,10 @@ def listar_produtos():
 
     return produtos
 
+def gerar_novo_id(produtos):
+    if not produtos:
+        return 1
+    return max(p["id"] for p in produtos) + 1
 
 def cadastrar_produto():
     produtos = carregar_json(ARQUIVO_PRODUTOS)
@@ -25,7 +29,7 @@ def cadastrar_produto():
         print("❌ Nome não pode ser vazio.")
         return
 
-    novo_id = max([p["id"] for p in produtos], default=0) + 1
+    novo_id = gerar_novo_id(produtos)
 
     produto = {
         "id": novo_id,
