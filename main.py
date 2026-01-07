@@ -1,7 +1,3 @@
-#from menu import menu
-
-#if __name__ == "__main__":
-    #menu()
 
 from fastapi import FastAPI
 from routers import produtos, vendas
